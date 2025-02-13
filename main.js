@@ -27,9 +27,9 @@ function creaTab(contenuto){
         ctx.stroke();
     }
     for (var i = 1; i < conte.length; i++){
-        ctx.fillText(1996+i,38+70*i,815);
-        ctx.moveTo(50+70*i,800);
-        ctx.lineTo(50+70*i,805);
+        ctx.fillText(1996+i,38+60*i,815);
+        ctx.moveTo(50+60*i,800);
+        ctx.lineTo(50+60*i,805);
         ctx.stroke();
     }
     ctx.moveTo(50,800);
@@ -49,7 +49,7 @@ function creaTab(contenuto){
         ctx.lineTo(an, 800-(parseInt(contenitore[1].replaceAll('"', ""))/250));
         ctx.font = "15px Arial";
         ctx.fillText(contenitore[1].replaceAll('"', ""),an + 15, 790-(parseInt(contenitore[1].replaceAll('"', ""))/250));
-        an+=70;
+        an+=60;
         ctx.stroke();
     }
 }
