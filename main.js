@@ -20,16 +20,36 @@ function creaTab(contenuto){
     ctx.lineTo(1880,800);
     ctx.stroke();
     ctx.font = "10px Arial";
+    var max = 0;
+    for (var i = 0; i < conte.length; i++){
+        var contenitore = conte[i].split(",");
+        if(parseInt(contenitore[1].replaceAll('"', "")) > max){
+            max = parseInt(contenitore[1].replaceAll('"', ""));
+        }
+    }
+    console.log(max);
+    var spx = max / 20;
+    var c = true;
+    var scala = 1;
+    while (c == true){
+        scala++;
+        if(max/scala < 700){
+            c = false;
+        }
+    }
+    console.log(scala);
+    console.log(spx);
     for (var i = 0; i < 20; i++){
-        ctx.fillText(10000*i,5,800-((10000*i)/250));
-        ctx.moveTo(50,795-(800/20)*i);
-        ctx.lineTo(45,795-(800/20)*i);
+        ctx.fillText(parseInt(spx*i),5,800-((spx*i)/scala));
+        ctx.moveTo(50,795-(spx*i)/scala);
+        ctx.lineTo(45,795-(spx*i)/scala);
         ctx.stroke();
     }
+    var space = (1880-38)/conte.length;
     for (var i = 1; i < conte.length; i++){
-        ctx.fillText(1996+i,38+60*i,815);
-        ctx.moveTo(50+60*i,800);
-        ctx.lineTo(50+60*i,805);
+        ctx.fillText(1996+i,38+space*i,815);
+        ctx.moveTo(50+space*i,800);
+        ctx.lineTo(50+space*i,805);
         ctx.stroke();
     }
     ctx.moveTo(50,800);
@@ -45,11 +65,10 @@ function creaTab(contenuto){
         riga.appendChild(ele_anno); //rende la colonna anno figlia della riga
         riga.appendChild(ele_numero); //rende la colonna numero figlia della riga
         tabella.appendChild(riga); //rende la riga figlia della tabella
-        console.log(parseInt(contenitore[1].replaceAll('"', "")))
-        ctx.lineTo(an, 800-(parseInt(contenitore[1].replaceAll('"', ""))/250));
+        ctx.lineTo(an, 800-(parseInt(contenitore[1].replaceAll('"', ""))/scala));
         ctx.font = "15px Arial";
-        ctx.fillText(contenitore[1].replaceAll('"', ""),an + 15, 790-(parseInt(contenitore[1].replaceAll('"', ""))/250));
-        an+=60;
+        ctx.fillText(contenitore[1].replaceAll('"', ""),an + 15, 790-(parseInt(contenitore[1].replaceAll('"', ""))/scala));
+        an+=space;
         ctx.stroke();
     }
 }
