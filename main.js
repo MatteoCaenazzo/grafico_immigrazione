@@ -39,7 +39,7 @@ function creaTab(contenuto){
     }
     console.log(scala);
     console.log(spx);
-    for (var i = 0; i < 30; i++){
+    for (var i = 0; i < 25; i++){
         ctx.fillText(parseInt(spx*i),5,800-((spx*i)/scala));
         ctx.moveTo(50,795-(spx*i)/scala);
         ctx.lineTo(45,795-(spx*i)/scala);
